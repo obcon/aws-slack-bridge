@@ -17,14 +17,11 @@ resource "aws_iam_role" "lambda" {
 EOF
 }
 
-
 resource "aws_lambda_function" "lambda" {
-  s3_bucket        = "${var.obcon_module_bucket}"
-  s3_key           = "${var.obcon_module_name}/${var.obcon_module_name}_${var.obcon_module_version}_code.zip"
-  function_name    = "${var.project}-${var.stage}-${var.obcon_module_name}"
-  role             = "${aws_iam_role.lambda.arn}"
-  handler          = "main.handler"
-  runtime          = "python3.6"
+  s3_bucket     = "${var.obcon_module_bucket}"
+  s3_key        = "${var.obcon_module_name}/${var.obcon_module_name}_${var.obcon_module_version}_code.zip"
+  function_name = "${var.project}-${var.stage}-${var.obcon_module_name}"
+  role          = "${aws_iam_role.lambda.arn}"
+  handler       = "main.handler"
+  runtime       = "python3.6"
 }
-
-
