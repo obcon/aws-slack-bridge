@@ -2,6 +2,8 @@ variable "project" {}
 
 variable "stage" {}
 
+variable "webhook" {}
+
 variable "obcon_module_bucket" {
   default = "obcon-aws-modules"
 }
@@ -13,4 +15,3 @@ variable "obcon_module_version" {
 variable "obcon_module_name" {
   default = "aws-slack-bridge"
 }
-
