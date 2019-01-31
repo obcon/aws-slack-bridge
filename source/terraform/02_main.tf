@@ -37,7 +37,7 @@ resource "aws_lambda_function" "lambda" {
   }
 }
 
-data "aws_sns_topic" "topic" {
+resource "aws_sns_topic" "topic" {
   name = "${var.project}-${var.stage}-${var.obcon_module_name}"
 }
 
