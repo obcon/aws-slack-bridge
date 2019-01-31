@@ -58,3 +58,29 @@ module "aws-slack-bridge" {
   webhook = "https://hooks.slack.com/services/<WEB_HOOK_ID>"
 }
 ```
+
+## if you want to integrate into your lambda function
+
+```
+import boto3
+import json
+
+client = boto3.client('lambda')
+
+slack_message = {
+    "username": "obcon",
+    "channel": "#general",
+    "icon_emoji": ":obcon:",
+    "attachments": [
+        {
+            "title": "obcon status event",
+            "text": "state"
+        }
+    ]
+}
+
+response = client.invoke(
+    FunctionName='<PROJECT>-<STAGE>-aws-slack-bridge',
+    InvocationType='Event',
+    Payload=json.dumps(slack_message).encode()
+)
